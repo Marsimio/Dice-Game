@@ -59,8 +59,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3260
     y: -199
-    width: 1289
-    height: 2160
+    width: 1468
+    height: 2180
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: Sword_Hit_Decal
+  m_Name: Sword_Hit_Decal 1
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -101,7 +101,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword_Hit_Decal
+  m_Name: Sword_Hit_Decal 1
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -2418,7 +2418,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614829}
   - {fileID: 8926484042661614831}
-  m_UIPosition: {x: 4100, y: 828}
+  m_UIPosition: {x: 4100, y: 896}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -2488,7 +2488,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"7523ef90dca28c249b3df41aae11ca37","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"e693d0651b6ba1a48b6410e7fe732f7e","type":3}}'
     m_Space: -1
   m_Property:
     name: mainTexture

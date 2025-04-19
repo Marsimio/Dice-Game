@@ -66,4 +66,9 @@ public class PlayerAttack : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
+    void DamageRoll()
+    {
+        
+    }
 }

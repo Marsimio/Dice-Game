@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
-    
+        
     private Transform player;
     
     public GameObject projectile;
@@ -13,11 +14,12 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     
     public Vector3 walkPoint;
-    private bool walkPointSet;
+    private bool walkPointSet;  
     public float walkPointRange;
     
     public float timeBetweenAttacks;
-    private bool alreadyAttacked;
+    private float attackCooldown;
+    private bool alreadyAttacking = false;
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -37,13 +39,19 @@ public class EnemyAI : MonoBehaviour
         {
             Patroling();
         }
-        if (playerInSightRange && !playerInAttackRange)
+        else if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
         }
-        if (playerInSightRange && playerInAttackRange)
+        else if (playerInSightRange && playerInAttackRange)
         {
-            AttackPlayer();
+            agent.SetDestination(transform.position);
+            transform.LookAt(player);
+
+            if (!alreadyAttacking)
+            {
+                StartCoroutine(AttackRoutine());
+            }
         }
         // print("Player in Sight: " + playerInSightRange + "Player in Range " + playerInAttackRange);
         // OnDrawGizmosSelected();
@@ -91,25 +99,21 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    private IEnumerator AttackRoutine()
     {
-        agent.SetDestination(transform.position);
-        
-        transform.LookAt(player);
+        alreadyAttacking = true;
 
-        if (!alreadyAttacked)
+        while (playerInSightRange && playerInAttackRange)
         {
+            // Attack logic here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 10, ForceMode.Impulse);
             rb.AddForce(transform.up * 8, ForceMode.Impulse);
-            alreadyAttacked = true; 
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
 
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
+            yield return new WaitForSeconds(timeBetweenAttacks);
+        }
+
+        alreadyAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
