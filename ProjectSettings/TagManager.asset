@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Bullet
+  - Item
+  - EnemyList
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - UI
   - Hit
   - Player
-  - 
-  - 
-  - 
+  - Bullet
+  - Enemy
+  - Item
   - 
   - 
   - 

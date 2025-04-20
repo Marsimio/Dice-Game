@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5695863846718466679}
   - component: {fileID: 8140879728661696324}
   - component: {fileID: 3691265960791155095}
-  - component: {fileID: 3287085722295684308}
   - component: {fileID: 1476833633902375260}
   m_Layer: 6
   m_Name: Enemy
@@ -125,7 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22807323eb7a0e14d98f2f1ac5245f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 173412647755051392, guid: 2a3381a01a1f73f40ac4cdcbf2120225, type: 3}
+  itemToDrop: {fileID: 0}
+  maxHealth: 0
+  itemLaunchForce: 5
+  projectile: {fileID: 4935770867452431620, guid: 4398e6e92aac4ca46a50b4a88c0ec574, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -139,19 +141,6 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
---- !u!114 &3287085722295684308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2392342767197115277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77a24d59d7d9204f8d29f6ac80e5248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
 --- !u!195 &1476833633902375260
 NavMeshAgent:
   m_ObjectHideFlags: 0

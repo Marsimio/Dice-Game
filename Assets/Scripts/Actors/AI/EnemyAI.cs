@@ -3,8 +3,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Actor
 {
+    public  EnemySO enemySo;
+    
     private NavMeshAgent agent;
         
     private Transform player;
@@ -21,11 +23,30 @@ public class EnemyAI : MonoBehaviour
     private float attackCooldown;
     private bool alreadyAttacking = false;
 
+    public float speed;
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    private void Awake()
+    protected override void Awake()
     {
+        if (enemySo != null)
+        {
+            currentHealth = enemySo.maxHealth;
+            speed = enemySo.speed;
+
+            agent = GetComponent<NavMeshAgent>();
+            agent.speed = speed;
+
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (enemySo.itemsToDrop.Length > 0)
+            {
+                itemToDrop = enemySo.itemsToDrop[Random.Range(0, enemySo.itemsToDrop.Length)];
+            }
+        }
+
+        base.Awake();
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -86,7 +107,7 @@ public class EnemyAI : MonoBehaviour
         
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        Debug.Log("Trying walkPoint: " + walkPoint);
+        //Debug.Log("Trying walkPoint: " + walkPoint);
         
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
@@ -105,17 +126,38 @@ public class EnemyAI : MonoBehaviour
 
         while (playerInSightRange && playerInAttackRange)
         {
-            // Attack logic here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 10, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8, ForceMode.Impulse);
-
+            LaunchProjectileAtPlayer();
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
 
         alreadyAttacking = false;
     }
+    
+    private void LaunchProjectileAtPlayer()
+    {
+        GameObject proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
 
+        if (rb != null && player.transform != null)
+        {
+            Vector3 velocity = CalculateArcVelocity(transform.position, player.transform.position, 0.5f);
+            rb.linearVelocity = velocity;
+        }
+    }
+    private Vector3 CalculateArcVelocity(Vector3 origin, Vector3 target, float height)
+    {
+        float gravity = Physics.gravity.y;
+
+        // Account for player displacement to enemy
+        Vector3 displacementXZ = new Vector3(target.x - origin.x, 0, target.z - origin.z);
+        float displacementY = target.y - origin.y;
+
+        // Initial velocity to projectile
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * height);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * height / gravity) + Mathf.Sqrt(2 * (displacementY - height) / gravity));
+
+        return velocityXZ + velocityY;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -5,10 +5,6 @@ public class PlayerAttack : MonoBehaviour
     public Camera cam;
     AudioSource audioSource;
     
-    public float attackDistance = 3f;
-    public float attackDelay = 0.4f;
-    public float attackSpeed = 1f;
-    public int atttackDamage = 1;
     public LayerMask attackLayer;
     
     public GameObject hitEffect;
@@ -27,8 +23,8 @@ public class PlayerAttack : MonoBehaviour
         readyToAttack = false;
         attacking = true;
         
-        Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRaycast), attackDelay);
+        Invoke(nameof(ResetAttack), StatsManager.instance.attackSpeed);
+        Invoke(nameof(AttackRaycast), StatsManager.instance.attackDelay);
         
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(swordSwing);
@@ -42,14 +38,14 @@ public class PlayerAttack : MonoBehaviour
 
     void AttackRaycast()
     {
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance,
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, StatsManager.instance.attackDistance,
                 attackLayer))
         {
             HitTarget(hit.point);
 
             if (hit.transform.TryGetComponent<Actor>(out Actor actor))
             {
-                actor.TakeDamage(atttackDamage);
+                actor.TakeDamage(StatsManager.instance.attackDamage);
             }
         }
     }
