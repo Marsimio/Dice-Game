@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6217593930305268374}
   - component: {fileID: 2549494665948561113}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: BossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e68f77e240a7f8643b5cc4253dc37516, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   itemToDrop: {fileID: 1172584953829499907, guid: 475c00a788d433d43a5b6f9e8ff0eb1f, type: 3}
   maxHealth: 3
   itemLaunchForce: 5
-  enemySo: {fileID: 11400000, guid: 62fed10c4d7b88847a0e263b0c87d3a1, type: 2}
+  enemySo: {fileID: 11400000, guid: 0063e4d12b78e004c96af0abe79a8ff3, type: 2}
   projectile: {fileID: 4935770867452431620, guid: 4398e6e92aac4ca46a50b4a88c0ec574, type: 3}
   whatIsGround:
     serializedVersion: 2

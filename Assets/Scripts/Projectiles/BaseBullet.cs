@@ -13,6 +13,8 @@ public class BaseBullet : MonoBehaviour
 
     public int explosionDamage;
     public int explosionRange;
+    private bool hasExploded = false;
+
     
     public int maxCollisions;
     public float maxLifetime;
@@ -55,6 +57,9 @@ public class BaseBullet : MonoBehaviour
 
     private void Explode()
     {
+        if (hasExploded) return; 
+        hasExploded = true;
+        
         if (explosion != null) Instantiate(explosion, transform.position, Quaternion.identity);
         
         Collider[] targets = Physics.OverlapSphere(transform.position, explosionRange, whatIsPlayer);
@@ -63,6 +68,7 @@ public class BaseBullet : MonoBehaviour
             PlayerActions player = target.GetComponent<PlayerActions>();
             if (player != null)
             {
+                print(explosionDamage);
                 player.TakeDamage(explosionDamage);
             }
         }

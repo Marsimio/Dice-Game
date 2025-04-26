@@ -22,6 +22,7 @@ public class Actor : MonoBehaviour
         {
             Death();
         }
+        
     }
 
     public void Death()
@@ -41,6 +42,8 @@ public class Actor : MonoBehaviour
             );
             rb.AddTorque(randomTorque, ForceMode.Impulse);
         }
+        GameManager.instance.enemiesLiving--;
+        GameManager.instance.UpdateUI();
         Destroy(gameObject);
     }
 }

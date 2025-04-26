@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Item
   - EnemyList
+  - UI
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

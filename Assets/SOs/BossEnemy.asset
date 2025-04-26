@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24339b7bcda39294f863902f560c0df7, type: 3}
   m_Name: BossEnemy
   m_EditorClassIdentifier: 
-  name: Goobo
+  enemyName: BigGuy
   maxHealth: 5
-  speed: 6
+  speed: 3
   itemsToDrop:
   - {fileID: 1172584953829499907, guid: 475c00a788d433d43a5b6f9e8ff0eb1f, type: 3}

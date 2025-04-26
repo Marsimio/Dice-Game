@@ -29,9 +29,14 @@ public class EnemyAI : Actor
 
     protected override void Awake()
     {
+
+        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        
         if (enemySo != null)
         {
-            currentHealth = enemySo.maxHealth;
+            maxHealth = enemySo.maxHealth;
             speed = enemySo.speed;
 
             agent = GetComponent<NavMeshAgent>();
@@ -44,11 +49,9 @@ public class EnemyAI : Actor
                 itemToDrop = enemySo.itemsToDrop[Random.Range(0, enemySo.itemsToDrop.Length)];
             }
         }
-
-        base.Awake();
-        
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        base.Awake();
     }
 
     private void Update()
