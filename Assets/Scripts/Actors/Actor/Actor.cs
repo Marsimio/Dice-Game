@@ -14,9 +14,9 @@ public class Actor : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        print("Taking Damage: " + amount);
+        // print("Taking Damage: " + amount);
         currentHealth -= amount;
-        print("Health: " + currentHealth);
+        // print("Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -43,6 +43,7 @@ public class Actor : MonoBehaviour
             rb.AddTorque(randomTorque, ForceMode.Impulse);
         }
         GameManager.instance.enemiesLiving--;
+        StatsManager.instance.money++;
         GameManager.instance.UpdateUI();
         Destroy(gameObject);
     }

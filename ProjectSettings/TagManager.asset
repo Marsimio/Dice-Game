@@ -10,6 +10,8 @@ TagManager:
   - EnemyList
   - UI
   - PlayerCamera
+  - ObjUI
+  - StatsUI
   layers:
   - Default
   - TransparentFX

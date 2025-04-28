@@ -10,14 +10,17 @@ public class StatsManager : MonoBehaviour
     public float attackDelay;
     public float attackSpeed;
     public int attackDamage;
-    public float jumpHeight;
     
     [Header("Movement Stats")]
     public int speed;
+    public float jumpHeight;
     
     [Header("Health Stats")]
     public int maxHealth;
     public int currentHealth;
+
+    [Header("Utility Stats")] 
+    public int money;
 
     private void Awake()
     {

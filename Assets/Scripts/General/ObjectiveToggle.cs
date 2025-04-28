@@ -22,8 +22,6 @@ public class ObjectiveToggle : MonoBehaviour
         root = uiDocument.rootVisualElement;
         objectivesMenu = root.Q<VisualElement>("ObjectiveBoard");
 
-        objectivesMenu.style.position = Position.Absolute;
-
         root.RegisterCallback<GeometryChangedEvent>(OnLayoutChanged);
     }
 

@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CutsceneTrigger : MonoBehaviour
 {
@@ -8,12 +9,19 @@ public class CutsceneTrigger : MonoBehaviour
     public Camera playerCamera;
     public CinemachineCamera cutsceneCamera;
 
-    private void Start()
+    
+    private void Awake()
     {
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
         if (playableDirector != null)
         {
             playableDirector.stopped += OnCutsceneEnd;
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
 
         if (playerCamera != null)
         {
@@ -36,14 +44,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void SwitchToPlayerCamera()
     {
-        if (cutsceneCamera != null)
-        {
-            cutsceneCamera.Priority = 0;
-        }
-
-        if (playerCamera != null)
-        {
-            playerCamera.gameObject.SetActive(true);
-        }
+        playerCamera.gameObject.SetActive(true);
+        GameObject.FindWithTag("MainCamera").SetActive(false);
     }
 }

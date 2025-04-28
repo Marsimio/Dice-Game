@@ -1,0 +1,27 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="VisualElement" style="flex-grow: 1; justify-content: center; align-self: auto; flex-direction: column; align-content: flex-start; align-items: stretch;">
+        <engine:VisualElement style="flex-grow: 0; background-color: rgba(72, 181, 188, 0.5); flex-shrink: 0; width: 20%; height: 30%; flex-direction: column; align-items: center; justify-content: center; align-self: auto;">
+            <engine:Label text="Shop Menu" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); flex-basis: 20%; font-size: 28px; align-self: auto;" />
+            <engine:VisualElement style="flex-grow: 0; flex-basis: 30%; height: 30%; background-color: rgba(214, 29, 29, 0.45); justify-content: space-evenly; flex-direction: row; align-items: stretch; align-self: stretch; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-content: flex-start;">
+                <engine:VisualElement name="Skill1" style="flex-grow: 0; flex-basis: 25%; align-items: center; justify-content: flex-start; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 30%; background-color: rgba(119, 192, 99, 0.73);">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 0; flex-basis: 80%; align-items: center; justify-content: center; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 100%; background-color: rgba(119, 192, 99, 0.73); flex-direction: column; border-left-color: rgba(190, 190, 190, 0.4); border-right-color: rgba(190, 190, 190, 0.4); border-top-color: rgba(190, 190, 190, 0.4); border-bottom-color: rgba(190, 190, 190, 0.4); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.45);">
+                        <engine:Label text="Max HP +1&#10;Cost: 1" style="align-items: stretch; -unity-text-align: upper-center; white-space: nowrap;" />
+                    </engine:VisualElement>
+                    <engine:Button text="Purchase" name="BuySkill1" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); background-color: rgb(152, 200, 153);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="Skill2" style="flex-grow: 0; flex-basis: 25%; align-items: center; justify-content: flex-start; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 30%; background-color: rgba(119, 192, 99, 0.73);">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 0; flex-basis: 80%; align-items: center; justify-content: center; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 100%; background-color: rgba(119, 192, 99, 0.73); flex-direction: column; border-left-color: rgba(190, 190, 190, 0.4); border-right-color: rgba(190, 190, 190, 0.4); border-top-color: rgba(190, 190, 190, 0.4); border-bottom-color: rgba(190, 190, 190, 0.4); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.45);">
+                        <engine:Label text="Max HP +1&#10;Cost: 1" style="align-items: stretch; -unity-text-align: upper-center; white-space: nowrap;" />
+                    </engine:VisualElement>
+                    <engine:Button text="Locked" name="BuySkill2" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); background-color: rgb(152, 200, 153);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="Skill3" style="flex-grow: 0; flex-basis: 25%; align-items: center; justify-content: flex-start; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 30%; background-color: rgba(119, 192, 99, 0.73);">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 0; flex-basis: 80%; align-items: center; justify-content: center; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 100%; background-color: rgba(119, 192, 99, 0.73); flex-direction: column; border-left-color: rgba(190, 190, 190, 0.4); border-right-color: rgba(190, 190, 190, 0.4); border-top-color: rgba(190, 190, 190, 0.4); border-bottom-color: rgba(190, 190, 190, 0.4); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.45);">
+                        <engine:Label text="Max ATK +2&#10;Cost: 1" style="align-items: stretch; -unity-text-align: upper-center; white-space: nowrap;" />
+                    </engine:VisualElement>
+                    <engine:Button text="Purchase" name="BuySkill3" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); background-color: rgb(152, 200, 153);" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

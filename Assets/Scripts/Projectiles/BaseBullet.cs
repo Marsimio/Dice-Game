@@ -4,7 +4,7 @@ public class BaseBullet : MonoBehaviour
 {
     
     public Rigidbody rb;
-    public GameObject explosion;
+    public GameObject explosion; // Currently the effect isnt implemented
     public LayerMask whatIsPlayer;
     
     [Range(0f, 1f)]

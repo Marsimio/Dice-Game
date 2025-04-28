@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
         }
         else
         {
@@ -26,10 +28,13 @@ public class GameManager : MonoBehaviour
             enemiesLiving = enemyList.transform.childCount;
         }
         uiManager = GetComponent<UpdateUI>();
-        uiManager.UpdateObjectiveBoard();
     }
-    
-    public void OnLevelLoaded()
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         enemyList = GameObject.FindGameObjectWithTag("EnemyList");
         if (enemyList != null)
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
         if (uiManager != null)
         {
             uiManager.UpdateObjectiveBoard();
+            uiManager.UpdateStatsMenu();
         }
         else
         {

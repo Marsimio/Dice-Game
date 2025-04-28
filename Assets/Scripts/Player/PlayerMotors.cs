@@ -1,4 +1,5 @@
 using System.Numerics;
+using Unity.Hierarchy;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -34,6 +35,8 @@ public class PlayerMotors : MonoBehaviour
 
     public void Jump()
     {
+        Debug.Log("Attempting to jump. isGrounded: " + isGrounded);
+        
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(StatsManager.instance.jumpHeight * -3.0f * gravity);

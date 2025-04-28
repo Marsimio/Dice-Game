@@ -1,68 +1,69 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class UpdateUI : MonoBehaviour
 {
-    public UIDocument uiDocument;
+    public UIDocument objUIDocument;
+    public UIDocument statsUIDocument;
 
-    private VisualElement root;
+    private VisualElement objRoot;
     private VisualElement objectivesMenu;
     private Label obj1;
     private Label obj2;
     private Label obj3;
-
-    private void Awake()
+    
+    private VisualElement statsRoot;
+    private VisualElement statsMenu;
+    private Label health;
+    private Label money;
+    
+    private void Start()
     {
-        SceneManager.sceneLoaded += HandleSceneLoaded;
-        TryInitUIDocument();
-    }
+        InitUIDocument();
 
-
-    void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        OnLevelLoaded();
-    }
-    public void OnLevelLoaded()
-    {
-        TryInitUIDocument();
-
-        if (uiDocument != null)
-        {
-            GameManager.instance.UpdateUI();
-        }
+        UpdateObjectiveBoard();
+        UpdateStatsMenu();
     }
     
-    void TryInitUIDocument()
+    void InitUIDocument()
     {
-        if (uiDocument == null)
+        if (objUIDocument == null)
         {
-            GameObject uiObj = GameObject.FindWithTag("UI");
-            if (uiObj != null)
-            {
-                uiObj.TryGetComponent(out uiDocument);
-            }
+            GameObject uiObj = GameObject.FindWithTag("ObjUI");
+            objUIDocument = uiObj.GetComponent<UIDocument>();
+        }
+        
+        if (statsUIDocument == null)
+        {
+            GameObject uiStats = GameObject.FindWithTag("StatsUI");
+            statsUIDocument = uiStats.GetComponent<UIDocument>();
         }
 
-        if (uiDocument == null) return;
-
-        root           = uiDocument.rootVisualElement;
-        objectivesMenu = root.Q<VisualElement>("ObjectiveBoard");
+        objRoot           = objUIDocument.rootVisualElement;
+        objectivesMenu = objRoot.Q<VisualElement>("ObjectiveBoard");
         obj1           = objectivesMenu.Q<Label>("Obj1");
         obj2           = objectivesMenu.Q<Label>("Obj2");
         obj3           = objectivesMenu.Q<Label>("Obj3");
+        
+        statsRoot           = statsUIDocument.rootVisualElement;
+        statsMenu = statsRoot.Q<VisualElement>("StatsBox");
+        health           = statsMenu.Q<Label>("Health");
+        money           = statsMenu.Q<Label>("Money");
+        
+        
     }
     
     public void UpdateObjectiveBoard()
     {
-        GameObject enemyList = GameObject.FindGameObjectWithTag("EnemyList");
-        if (enemyList == null)
-        {
-            Debug.LogWarning("No GameObject with tag 'EnemyList' found.");
-            return;
-        }
-
         obj1.text = "Enemies left: " + GameManager.instance.enemiesLiving;
+    }
+
+    public void UpdateStatsMenu()
+    {
+        health.text = StatsManager.instance.currentHealth.ToString();
+        money.text = StatsManager.instance.money.ToString();
     }
 }

@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; justify-content: center;">
+        <engine:VisualElement style="flex-grow: 0; flex-basis: 40%; align-items: center; justify-content: center; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 30%; background-color: rgba(72, 181, 188, 0.5);">
+            <engine:Label text="Shop Menu" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); flex-basis: 20%; font-size: 28px;" />
+            <engine:VisualElement style="flex-grow: 0; flex-basis: 40%; align-items: center; justify-content: flex-start; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 30%; background-color: rgba(119, 192, 99, 0.73);">
+                <engine:VisualElement name="VisualElement" style="flex-grow: 0; flex-basis: 80%; align-items: center; justify-content: center; align-self: center; align-content: flex-start; bottom: auto; top: auto; left: auto; right: auto; width: 100%; background-color: rgba(119, 192, 99, 0.73); flex-direction: column; border-left-color: rgba(190, 190, 190, 0.4); border-right-color: rgba(190, 190, 190, 0.4); border-top-color: rgba(190, 190, 190, 0.4); border-bottom-color: rgba(190, 190, 190, 0.4); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.45);">
+                    <engine:Label text="Health&#10;2 Cost" style="align-items: stretch; -unity-text-align: upper-center; white-space: nowrap;" />
+                </engine:VisualElement>
+                <engine:Button text="Purchase" name="BuyButton" style="-unity-font-definition: resource(&apos;Font/alagard&apos;); background-color: rgb(152, 200, 153);" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
